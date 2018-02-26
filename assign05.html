@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>05</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize/modern-normalize.min.css">
+  <style>
+  video { height: 300px; border: 5px solid hotpink; }
+  div { background-color: #121212; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;}
+  </style>
+</head>
+<body>
+  <div><video src="https://media.giphy.com/media/6oyHViE7fvjYk/giphy.mp4" loop></video></div>
+  <div><video src="https://media.giphy.com/media/3o752krWg1gI5P0k4E/giphy.mp4" loop></video></div>
+  <div><video src="https://media.giphy.com/media/3o751ZGnnh1aRKf34Q/giphy.mp4" loop></video></div>
+  <div><video src="https://media.giphy.com/media/3o751Zb3xm33323PX2/giphy.mp4" loop></video></div>
+  <div><video src="https://media.giphy.com/media/l0HUldzuCa0S16SkM/giphy.mp4" loop></video></div>
+
+  <script>
+  'use strict';
+function callback(entries) {
+    entries.forEach(entry => {
+      // Each entry describes an intersection change for one observed
+      // target element:
+      if(entry.intersectionRatio === 1) {
+        console.log(entry);
+        entry.target.play();
+      }
+      else {
+        entry.target.pause();
+      }
+      //   entry.intersectionRatio
+      //   entry.intersectionRect
+      //   entry.isIntersecting
+      //   entry.rootBounds
+      //   entry.target
+      //   entry.time
+    });
+  };
+  var options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 1.0
+  }
+  var observer = new IntersectionObserver(callback, options);
+  var targets = Array.from(document.querySelectorAll('video'));
+
+  targets.map(target => observer.observe(target));
+
+  </script>
+</body>
+</html>
