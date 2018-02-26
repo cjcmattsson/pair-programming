@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+    // fetch('https://yrgo.github.io/api/movies/the-room.json')
+    //   .then(response => response.json())
+    //   .then(response => console.log(response[0]))
+
+    const ask = function(question) {
+      var name = window.prompt('What is your first name?');
+      console.log(name);
+
+      if (name) {
+        return Promise.resolve();
+      }
+      return Promise.reject();
+    }
+
+    ask('What is your first name?')
+  .then(firstName => ask(`Oh hi, ${firstName}! How old are you?`))
+  .then(age => window.alert(`${age}? That's a great age!`))
+  .catch(console.error);
+
+    </script>
+  </body>
+</html>
